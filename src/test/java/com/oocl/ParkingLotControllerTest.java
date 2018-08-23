@@ -45,19 +45,6 @@ public class ParkingLotControllerTest {
     private ObjectMapper mapper;
 
     @Test
-    public void should_return_parkingLot1_given_a_parkingBoy_phone_number_1352546585_when_call_findParkingLots() throws Exception {
-
-        ParkingLot parkingLot1=new ParkingLot("北方停车场",10);
-        ParkingBoy parkingBoy = new ParkingBoy("小北","13525465855",Arrays.asList(parkingLot1));
-        given(parkingBoyService.findByPhone(anyString())).willReturn(parkingBoy);
-        mockMvc.perform(get("/parkingLots?number=:"+"13525465855"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("北方停车场"))
-                .andExpect(jsonPath("$[0].size").value(10));
-
-    }
-
-    @Test
     public void should_return_parkingLot1_given_condition_is_parkingLot_name_when_call_findParkingLots() throws  Exception{
         ParkingLot parkingLot1=new ParkingLot("南方停车场",10);
         given(parkingLotService.findByConditions(any())).willReturn(Arrays.asList(parkingLot1));

@@ -25,15 +25,11 @@ public class ParkingLotService {
         this.parkingLotRepository=parkingLotRepository;
     }
 
-    public List<ParkingLot> findParkingLots(String number) {
-        ParkingLot parkingLot = parkingLotRepository.findByName("北方停车场").get(0);
-        List<ParkingLot> lots= parkingLotRepository.findAll();
-
-        return lots;
-    }
-
     public List<ParkingLot> findByConditions(Conditions conditions) {
         List<ParkingLot> lots= new ArrayList<>();
+        if(conditions.getName()!=null&&conditions.getSize()!=null){
+            lots=parkingLotRepository.findAllByNameAndSize(conditions.getName(),conditions.getSize());
+        }
         if(conditions.getName()!=null){
             lots=parkingLotRepository.findAllByName(conditions.getName());
         }

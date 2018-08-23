@@ -29,5 +29,8 @@
  3.Given parkingLot size 10
    When call findByConditions
    Then return List is parkingLot1
+ 4.Given parkingLot name is 南方 and size is 10
+   When call findByConditions
+   Then return List is parkingLot1
 ```
 
