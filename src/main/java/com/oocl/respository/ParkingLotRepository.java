@@ -22,7 +22,6 @@ public interface ParkingLotRepository extends JpaRepository<ParkingLot,Long> {
     @Query("SELECT lot FROM ParkingLot lot where lot.name like %:name%")
     List<ParkingLot> findAllByName(@Param("name")String name);
 
-
     List<ParkingLot> findByName(String name);
 
 }

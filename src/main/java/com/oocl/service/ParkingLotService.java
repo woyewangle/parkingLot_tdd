@@ -2,6 +2,7 @@ package com.oocl.service;
 
 import com.oocl.entity.ParkingLot;
 import com.oocl.respository.ParkingLotRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @Service
 public class ParkingLotService {
 
+    @Autowired
     ParkingLotRepository parkingLotRepository;
 
     public ParkingLotService(ParkingLotRepository parkingLotRepository) {
@@ -28,12 +30,9 @@ public class ParkingLotService {
         return lots;
     }
 
-    public List<ParkingLot> findByName(String name) {
-        return null;
-    }
-
     public List<ParkingLot> findByConditions(String name) {
-        parkingLotRepository.findAllByName(name);
-        return null;
+
+        List<ParkingLot> lots=parkingLotRepository.findAllByName(name);
+        return lots;
     }
 }

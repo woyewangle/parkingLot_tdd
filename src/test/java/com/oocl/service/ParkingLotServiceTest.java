@@ -3,8 +3,10 @@ package com.oocl.service;
 import com.oocl.entity.ParkingLot;
 import com.oocl.respository.ParkingLotRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
 
 /**
  * @Author: Leon
@@ -23,7 +26,7 @@ import static org.mockito.BDDMockito.given;
  * @Date: Create in 4:45 PM 8/23/2018
  * @Modified By:
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 class ParkingLotServiceTest {
     @Mock
     ParkingLotRepository parkingLotRepository;
@@ -46,8 +49,8 @@ class ParkingLotServiceTest {
     public void should_return_parkingLot1_when_name_is_not_null(){
         ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
         ParkingLot parkingLot = new ParkingLot("南方停车场",10);
-        given(parkingLotRepository.findAllByName(anyString())).willReturn(Arrays.asList(parkingLot));
-
+//        given(parkingLotRepository.findAllByName(anyString())).willReturn(Arrays.asList(parkingLot));
+        when(parkingLotRepository.findAllByName(anyString())).thenReturn(Arrays.asList(parkingLot));
         List<ParkingLot> lots = parkingLotService.findByConditions("南方");
         assertThat(lots,is(Arrays.asList(parkingLot)));
     }
