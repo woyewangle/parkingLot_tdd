@@ -33,9 +33,11 @@ public class ParkingLotController {
 
     @Transactional
     @GetMapping(path= "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ParkingLot> findParkingLots(@RequestParam(value = "number", required = false) String number ) {
-        ParkingBoy parkingBoy = parkingBoyService.findByPhone(number);
-        List<ParkingLot> lots = parkingBoy.getLots();
+    public List<ParkingLot> findParkingLots(@RequestParam(value = "number", required = false) String number,
+                                            @RequestParam(value = "name", required = false) String name) {
+        //ParkingBoy parkingBoy = parkingBoyService.findByPhone(number);
+
+        List<ParkingLot> lots = parkingLotService.findByConditions(name);
         return lots;
     }
 

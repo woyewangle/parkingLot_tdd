@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -41,12 +42,13 @@ class ParkingLotServiceTest {
 //    }
 
 
-//    @Test
-//    public void should_return_company_when_addCompany(){
-//        CompanyService companyService=new CompanyService(companyRepository,employeesRepository);
-//        Company company=new Company(1,"ad");
-//        given(companyRepository.save(company)).willReturn(company);
-//        companyService.addCompany(company);
-//        verify(companyRepository).save(company);
-//    }
+    @Test
+    public void should_return_parkingLot1_when_name_is_not_null(){
+        ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
+        ParkingLot parkingLot = new ParkingLot("南方停车场",10);
+        given(parkingLotRepository.findAllByName(anyString())).willReturn(Arrays.asList(parkingLot));
+
+        List<ParkingLot> lots = parkingLotService.findByConditions("南方");
+        assertThat(lots,is(Arrays.asList(parkingLot)));
+    }
 }
