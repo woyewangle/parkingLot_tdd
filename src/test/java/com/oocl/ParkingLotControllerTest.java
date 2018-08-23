@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -59,8 +60,8 @@ public class ParkingLotControllerTest {
     @Test
     public void should_return_parkingLot1_given_condition_is_parkingLot_name_when_call_findParkingLots() throws  Exception{
         ParkingLot parkingLot1=new ParkingLot("南方停车场",10);
-        given(parkingLotService.findByConditions(anyString())).willReturn(Arrays.asList(parkingLot1));
-        mockMvc.perform(get("/parkingLots?name="+"南方"))
+        given(parkingLotService.findByConditions(any())).willReturn(Arrays.asList(parkingLot1));
+        mockMvc.perform(get("/parkingLots?name=南方"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("南方停车场"))
                 .andExpect(jsonPath("$[0].size").value(10));
@@ -70,7 +71,7 @@ public class ParkingLotControllerTest {
     @Test
     public void should_return_parkingLot1_given_condition_is_parkingLot_size_is_10_when_call_findParkingLots() throws  Exception{
         ParkingLot parkingLot1=new ParkingLot("南方停车场",10);
-        given(parkingLotService.findByConditions(anyString())).willReturn(Arrays.asList(parkingLot1));
+        given(parkingLotService.findByConditions(any())).willReturn(Arrays.asList(parkingLot1));
         mockMvc.perform(get("/parkingLots?size=10"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("南方停车场"))

@@ -1,10 +1,12 @@
 package com.oocl.service;
 
+import com.oocl.entity.Conditions;
 import com.oocl.entity.ParkingLot;
 import com.oocl.respository.ParkingLotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,9 +32,14 @@ public class ParkingLotService {
         return lots;
     }
 
-    public List<ParkingLot> findByConditions(String name) {
-
-        List<ParkingLot> lots=parkingLotRepository.findAllByName(name);
+    public List<ParkingLot> findByConditions(Conditions conditions) {
+        List<ParkingLot> lots= new ArrayList<>();
+        if(conditions.getName()!=null){
+            lots=parkingLotRepository.findAllByName(conditions.getName());
+        }
+        if(conditions.getSize()!=null){
+            lots=parkingLotRepository.findAllBySize(conditions.getSize());
+        }
         return lots;
     }
 }

@@ -1,5 +1,6 @@
 package com.oocl.controller;
 
+import com.oocl.entity.Conditions;
 import com.oocl.entity.ParkingBoy;
 import com.oocl.entity.ParkingLot;
 import com.oocl.service.ParkingBoyService;
@@ -34,10 +35,14 @@ public class ParkingLotController {
     @Transactional
     @GetMapping(path= "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ParkingLot> findParkingLots(@RequestParam(value = "number", required = false) String number,
-                                            @RequestParam(value = "name", required = false) String name) {
+                                            @RequestParam(value = "name", required = false) String name,
+                                            @RequestParam(value = "size", required = false) Integer size) {
         //ParkingBoy parkingBoy = parkingBoyService.findByPhone(number);
 
-        List<ParkingLot> lots = parkingLotService.findByConditions(name);
+        Conditions conditions = new Conditions();
+        conditions.setName(name);
+        conditions.setSize(size);
+        List<ParkingLot> lots = parkingLotService.findByConditions(conditions);
         return lots;
     }
 

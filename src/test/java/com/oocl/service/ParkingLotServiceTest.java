@@ -1,5 +1,6 @@
 package com.oocl.service;
 
+import com.oocl.entity.Conditions;
 import com.oocl.entity.ParkingLot;
 import com.oocl.respository.ParkingLotRepository;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
@@ -49,9 +51,11 @@ class ParkingLotServiceTest {
     public void should_return_parkingLot1_when_name_is_not_null(){
         ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
         ParkingLot parkingLot = new ParkingLot("南方停车场",10);
-//        given(parkingLotRepository.findAllByName(anyString())).willReturn(Arrays.asList(parkingLot));
-        when(parkingLotRepository.findAllByName(anyString())).thenReturn(Arrays.asList(parkingLot));
-        List<ParkingLot> lots = parkingLotService.findByConditions("南方");
+        when(parkingLotRepository.findAllByName(any())).thenReturn(Arrays.asList(parkingLot));
+        Conditions conditions = new Conditions();
+        conditions.setName("南方");
+        List<ParkingLot> lots = parkingLotService.findByConditions(conditions);
         assertThat(lots,is(Arrays.asList(parkingLot)));
     }
+
 }

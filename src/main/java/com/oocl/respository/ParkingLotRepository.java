@@ -24,4 +24,5 @@ public interface ParkingLotRepository extends JpaRepository<ParkingLot,Long> {
 
     List<ParkingLot> findByName(String name);
 
+    List<ParkingLot> findAllBySize(Integer size);
 }
