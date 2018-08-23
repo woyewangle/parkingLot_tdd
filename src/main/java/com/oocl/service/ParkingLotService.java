@@ -1,6 +1,7 @@
 package com.oocl.service;
 
 import com.oocl.entity.ParkingLot;
+import com.oocl.respository.ParkingLotRepository;
 
 import java.util.List;
 
@@ -11,6 +12,10 @@ import java.util.List;
  * @Modified By:
  */
 public class ParkingLotService {
+    public ParkingLotService(ParkingLotRepository parkingLotRepository) {
+
+    }
+
     public List<ParkingLot> findParkingLots(String number) {
         return null;
     }

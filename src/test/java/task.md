@@ -5,5 +5,12 @@
  ```java 
  1.Given parkingBoy phone number 1352546585
    When call findParkingLots(String phone) 
-   Then return parkingLot1
+   Then return List is parkingLot1
 ```
+ ###Service
+ ```java
+ 1.Given parkingBoy phone number 1352546585
+   When call findParkingLots(String phone)
+   Then return List is parkingLot1
+```
+
