@@ -12,6 +12,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
+
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -39,8 +42,8 @@ public class ParkingLotControllerTest {
     public void should_return_parkingLot1_given_a_parkingBoy_phone_number_1352546585_when_call_findParkingLots() throws Exception {
 
         ParkingLot parkingLot1=new ParkingLot(1L,"北方停车场",10);
-        given(parkingLotService.findParkingLots()).willReturn(parkingLot1);
-        mockMvc.perform(get("/parkingLots/{0}","1352546585"))
+        given(parkingLotService.findParkingLots(anyString())).willReturn(Arrays.asList(parkingLot1));
+        mockMvc.perform(get("/parkingLots?number=:"+"1352546585"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1L))
                 .andExpect(jsonPath("$[0].name").value("北方停车场"))

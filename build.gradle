@@ -29,6 +29,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-web')
 
+
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0'
+	testCompile 'org.junit.jupiter:junit-jupiter-params:5.0.0'
+
+	testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.0.0'
+	testCompile 'org.mockito:mockito-junit-jupiter:2.18.3'
+	testCompile 'org.junit.vintage:junit-vintage-engine:5.2.0'
 }

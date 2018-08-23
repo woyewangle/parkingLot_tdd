@@ -1,5 +1,9 @@
 package com.oocl.service;
 
+import com.oocl.entity.ParkingLot;
+
+import java.util.List;
+
 /**
  * @Author: 余锡鸿
  * @Description:
@@ -7,6 +11,7 @@ package com.oocl.service;
  * @Modified By:
  */
 public class ParkingLotService {
-    public void findParkingLots() {
+    public List<ParkingLot> findParkingLots(String number) {
+        return null;
     }
 }
