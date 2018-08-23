@@ -25,9 +25,12 @@ public class ParkingLot {
     }
 
     public ParkingLot(String name, int size) {
-//        this.id = id;
         this.name = name;
         this.size = size;
+    }
+
+    public void addParkingBoy(ParkingBoy parkingBoy){
+        this.parkingBoy = parkingBoy;
     }
 
     public Long getId() {

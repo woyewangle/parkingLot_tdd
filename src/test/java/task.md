@@ -6,6 +6,9 @@
  1.Given parkingBoy phone number 1352546585
    When call findParkingLots(String phone) 
    Then return List is parkingLot1
+ 2.Given parkingLot name '南方'
+   When call findParkingLots(String name)
+   Then return List is parkingLot1
 ```
  ###Service
  ```java

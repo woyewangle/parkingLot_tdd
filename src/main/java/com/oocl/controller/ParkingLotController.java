@@ -1,6 +1,8 @@
 package com.oocl.controller;
 
+import com.oocl.entity.ParkingBoy;
 import com.oocl.entity.ParkingLot;
+import com.oocl.service.ParkingBoyService;
 import com.oocl.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -24,30 +26,18 @@ import java.util.List;
 @RequestMapping("/parkingLots")
 public class ParkingLotController {
     @Autowired
-    ParkingLotService service;
+    ParkingLotService parkingLotService;
+
+    @Autowired
+    ParkingBoyService parkingBoyService;
 
     @Transactional
     @GetMapping(path= "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ParkingLot> findParkingLots(@RequestParam(value = "number", required = false) String number ) {
-//        List<ParkingLot> lots = service.findParkingLots(number);
-        System.out.println("321423423");
-        List<ParkingLot> lots = service.findParkingLots(number);
-        System.out.println(lots.get(0).getName());
+        ParkingBoy parkingBoy = parkingBoyService.findByPhone(number);
+        List<ParkingLot> lots = parkingBoy.getLots();
         return lots;
     }
-
-
-    @GetMapping(path= "/1", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ParkingLot> find() {
-//        List<ParkingLot> lots = service.findParkingLots(number);
-        System.out.println("==============================================================================");
-        List<ParkingLot> lots = service.findParkingLots("1111111");
-        System.out.println(lots.get(0).getName());
-        return lots;
-    }
-
-
-
 
     /*
     * @Transactional

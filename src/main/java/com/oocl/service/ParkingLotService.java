@@ -30,4 +30,8 @@ public class ParkingLotService {
 
         return lots;
     }
+
+    public List<ParkingLot> findByName(String name) {
+        return null;
+    }
 }

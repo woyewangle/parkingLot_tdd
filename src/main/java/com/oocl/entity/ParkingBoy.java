@@ -30,6 +30,12 @@ public class ParkingBoy {
         this.phone = phone;
     }
 
+    public ParkingBoy(String name, String phone, List<ParkingLot> lots) {
+        this.name = name;
+        this.phone = phone;
+        this.lots = lots;
+    }
+
     public void addParkingLot(ParkingLot parkingLot){
         lots.add(parkingLot);
     }
