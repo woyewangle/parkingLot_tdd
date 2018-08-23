@@ -60,7 +60,18 @@ public class ParkingLotControllerTest {
     public void should_return_parkingLot1_given_condition_is_parkingLot_name_when_call_findParkingLots() throws  Exception{
         ParkingLot parkingLot1=new ParkingLot("南方停车场",10);
         given(parkingLotService.findByConditions(anyString())).willReturn(Arrays.asList(parkingLot1));
-        mockMvc.perform(get("/parkingLots?name=:"+"南方"))
+        mockMvc.perform(get("/parkingLots?name="+"南方"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("南方停车场"))
+                .andExpect(jsonPath("$[0].size").value(10));
+    }
+
+
+    @Test
+    public void should_return_parkingLot1_given_condition_is_parkingLot_size_is_10_when_call_findParkingLots() throws  Exception{
+        ParkingLot parkingLot1=new ParkingLot("南方停车场",10);
+        given(parkingLotService.findByConditions(anyString())).willReturn(Arrays.asList(parkingLot1));
+        mockMvc.perform(get("/parkingLots?size=10"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("南方停车场"))
                 .andExpect(jsonPath("$[0].size").value(10));
