@@ -27,18 +27,18 @@ class ParkingLotServiceTest {
     @Mock
     ParkingLotRepository parkingLotRepository;
 
-    @Test
-    public void should_return_right_parkingLotList_when_find_by_phone_number_1352546585() {
-        ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
-        List<ParkingLot> parkingLots = new ArrayList<>();
-        parkingLots.add(new ParkingLot(1L,"北方停车场",10));
-        given(parkingLotRepository.findByConditions(anyString())).willReturn(parkingLots);
-
-        List<ParkingLot> parkingLotList = parkingLotService.findParkingLots("1352546585");
-
-        assertThat(parkingLotList,is(parkingLots));
-
-    }
+//    @Test
+//    public void should_return_right_parkingLotList_when_find_by_phone_number_1352546585() {
+//        ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
+//        List<ParkingLot> parkingLots = new ArrayList<>();
+//        parkingLots.add(new ParkingLot(1L,"北方停车场",10));
+//        given(parkingLotRepository.findByConditions(anyString())).willReturn(parkingLots);
+//
+//        List<ParkingLot> parkingLotList = parkingLotService.findParkingLots("1352546585");
+//
+//        assertThat(parkingLotList,is(parkingLots));
+//
+//    }
 
 
 //    @Test

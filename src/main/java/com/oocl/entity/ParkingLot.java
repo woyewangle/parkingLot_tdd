@@ -1,6 +1,6 @@
 package com.oocl.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * @Author: 余锡鸿
@@ -9,16 +9,23 @@ import javax.persistence.Entity;
  * @Modified By:
  */
 @Entity
+@Table(name = "parking_lot")
 public class ParkingLot {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int size;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "parkingBoy_id")
+    private ParkingBoy parkingBoy;
+
     public ParkingLot() {
     }
 
-    public ParkingLot(Long id, String name, int size) {
-        this.id = id;
+    public ParkingLot(String name, int size) {
+//        this.id = id;
         this.name = name;
         this.size = size;
     }

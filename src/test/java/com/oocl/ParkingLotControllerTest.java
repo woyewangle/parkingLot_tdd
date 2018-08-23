@@ -38,6 +38,19 @@ public class ParkingLotControllerTest {
     @Autowired
     private ObjectMapper mapper;
 
+//    @Test
+//    public void should_return_parkingLot1_given_a_parkingBoy_phone_number_1352546585_when_call_findParkingLots() throws Exception {
+//
+//        ParkingLot parkingLot1=new ParkingLot(1L,"北方停车场",10);
+//        given(parkingLotService.findParkingLots(anyString())).willReturn(Arrays.asList(parkingLot1));
+//        mockMvc.perform(get("/parkingLots?number=:"+"1352546585"))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$[0].id").value(1L))
+//                .andExpect(jsonPath("$[0].name").value("北方停车场"))
+//                .andExpect(jsonPath("$[0].size").value(10));
+//
+//    }
+
     @Test
     public void should_return_parkingLot1_given_a_parkingBoy_phone_number_1352546585_when_call_findParkingLots() throws Exception {
 

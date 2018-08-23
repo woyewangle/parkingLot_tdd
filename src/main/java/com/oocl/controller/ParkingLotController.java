@@ -29,7 +29,20 @@ public class ParkingLotController {
     @Transactional
     @GetMapping(path= "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ParkingLot> findParkingLots(@RequestParam(value = "number", required = false) String number ) {
+//        List<ParkingLot> lots = service.findParkingLots(number);
+        System.out.println("321423423");
         List<ParkingLot> lots = service.findParkingLots(number);
+        System.out.println(lots.get(0).getName());
+        return lots;
+    }
+
+
+    @GetMapping(path= "/1", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ParkingLot> find() {
+//        List<ParkingLot> lots = service.findParkingLots(number);
+        System.out.println("==============================================================================");
+        List<ParkingLot> lots = service.findParkingLots("1111111");
+        System.out.println(lots.get(0).getName());
         return lots;
     }
 
