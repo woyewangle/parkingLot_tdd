@@ -58,4 +58,14 @@ class ParkingLotServiceTest {
         assertThat(lots,is(Arrays.asList(parkingLot)));
     }
 
+    @Test
+    public void should_return_parkingLot1_when_size_is_10(){
+        ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository);
+        ParkingLot parkingLot = new ParkingLot("南方停车场",10);
+        when(parkingLotRepository.findAllBySize(any())).thenReturn(Arrays.asList(parkingLot));
+        Conditions conditions = new Conditions();
+        conditions.setSize(10);
+        List<ParkingLot> lots = parkingLotService.findByConditions(conditions);
+        assertThat(lots,is(Arrays.asList(parkingLot)));
+    }
 }
